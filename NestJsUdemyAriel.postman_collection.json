@@ -1,0 +1,182 @@
+{
+	"info": {
+		"_postman_id": "87c72844-b0f2-48c6-9f63-1c8eaed0d5ff",
+		"name": "NestJsUdemyAriel",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "9236394"
+	},
+	"item": [
+		{
+			"name": "Tasks",
+			"item": [
+				{
+					"name": "getAllTasks",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "{{TOKEN}}"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{nestjs-task}}/tasks?status=OPEN",
+							"host": [
+								"{{nestjs-task}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "OPEN",
+									"description": "OPEN, IN_PROGRESS, DONE"
+								},
+								{
+									"key": "search",
+									"value": "was",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getTaskById(id)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{nestjs-task}}/tasks/6cb57c18-35c8-453c-ab13-a7fc67239f2f"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteTask",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{nestjs-task}}/tasks/6cb57c18-35c8-453c-ab13-a7fc67239f2f"
+					},
+					"response": []
+				},
+				{
+					"name": "createTask",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImlhcmFybXNhbnRvcyIsImlhdCI6MTczNDE3NjkwMiwiZXhwIjoxNzM0MTgwNTAyfQ.ua0yFCywvh-1a_lDAjE9i7aqC4x3RC5ZVyMHwSmFW_A"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "title",
+									"value": "Wash clothes",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Do laundry",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{nestjs-task}}/tasks"
+					},
+					"response": []
+				},
+				{
+					"name": "updateTaskStatus",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "status",
+									"value": "IN_PROGRESS",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{nestjs-task}}/tasks/f900a0b2-c5a2-46a8-a1fa-19b52f716219/status"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "iararmsantos",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Super@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{nestjs-task}}/auth/signup"
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "iararmsantos",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "Super@123",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{nestjs-task}}/auth/signin"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "nestjs-task",
+			"value": "http://localhost:3000",
+			"type": "default"
+		},
+		{
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImlhcmFybXNhbnRvcyIsImlhdCI6MTczNDE3NjkwMiwiZXhwIjoxNzM0MTgwNTAyfQ.ua0yFCywvh-1a_lDAjE9i7aqC4x3RC5ZVyMHwSmFW_A",
+			"type": "default"
+		}
+	]
+}
