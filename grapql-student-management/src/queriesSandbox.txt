@@ -1,0 +1,73 @@
+With the service running go to: http://localhost:3000/graphql
+
+getLesson:
+query {
+  lesson(id: "3b871e3b-3855-4e52-b2f8-a8016635be6a") {
+    name
+    startDate
+  }  
+}
+
+createLesson:
+mutation {
+  createLesson (
+    createLessonInput: {
+      name: "English Class"
+    startDate: "2020-03-28T18:00:00Z"
+    endDate: "2021-03-28T18:00:00Z"
+      students: ["49570f5c-0982-42e2-8c22-fb3af2d74810", 
+        "fc82cfb4-609d-4e14-8f96-ebd7ed46d5e8"]
+    }
+  ) {
+    name
+    id
+    students {
+      firstName
+      lastName
+    }
+  }
+}
+
+getLessons:
+query {
+  lessons {
+    id
+    name
+  }
+}
+
+assign Students to Lesson:
+mutation {
+  assignStudentsToLesson(assignStudentsToLessonInput: {
+    lessonId: "e881a5dc-278e-482f-bf0d-1597333aed54",
+    studentIds: ["49570f5c-0982-42e2-8c22-fb3af2d74810", "fc82cfb4-609d-4e14-8f96-ebd7ed46d5e8"]
+  }) {
+    name
+  }
+}
+
+getStudent:
+query {
+  student(id: "49570f5c-0982-42e2-8c22-fb3af2d74810") {
+    firstName
+  }
+}
+
+getStudents:
+query {
+  students {
+    firstName
+  }
+}
+
+createStudent:
+mutation {
+  createStudent(createStudentInput: {
+    firstName: "John",
+    lastName: "Doe"
+  }) {
+    id
+    firstName
+    lastName
+  }
+}
